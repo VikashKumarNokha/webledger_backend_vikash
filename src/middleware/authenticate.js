@@ -19,11 +19,11 @@ require("dotenv").config()
 const authenticate = async (req, res, next) =>{
 
       if(!req.headers.authorization){
-         return res.status(400).send({message : "Autentication tocken not found or invalid"});
+         return res.status(200).send({message : "Autentication tocken not found or invalid"});
       }
 
       if(!req.headers.authorization.startsWith("Bearer")){
-          return res.status(400).send({message : "Autentication tocken not found or invalid"})
+          return res.status(200).send({message : "Autentication tocken not found or invalid"})
       }
 
       const tocken = req.headers.authorization.trim().split(" ")[1];
