@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+require('dotenv').config()
 
 
 const passport = require("./configs/google-oauth")
@@ -35,9 +36,11 @@ app.get('/auth/google/callback',
     res.status(200).send({"user" : req.user, "tocken" : tocken}) ;
   });
 
+  
+  const port=process.env.PORT || 5000
 
 
-app.listen(5000, async ()=>{
+app.listen(port, async ()=>{
       try{
            await connect();
         console.log("server running on port 5000");
